@@ -1,79 +1,123 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Webpage</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Equation Recognizer</title>
     <style>
         body {
-            
-                background-image: url("static\\background_images\\transperant 1.png");
-                background-size: cover;
-            
-        }
-        .upload-image{
-            position: absolute;
-            top: 325px;
-            left:369px;
-            width: 140px;
-            height: 40px;
-            color: black;
-            font-size: 17px;
-            background-color:#f5af92;
-            border-color: #f5af92;
-            border-radius: 8px;
-    
-        }
-        .canvas-board{
-            position: absolute;
-            top: 325px;
-            left:808px;
-            width: 140px;
-            height: 40px;
-            color: black;
-            font-size: 17px;
-            background-color: #bccdf4;
-            border-color:#bccdf4 ;
-            border-radius: 8px;
-        }
-        .tag-line1{
-            font-size: 50px;
-            position: absolute;
-            left: 370px;
-            top: 87px;
-            text-align: justify; 
-            color: orange;
-            border: white;
-            text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+            background-image: url("static/background_images/1.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
         }
 
-        .tag-line2{
-            font-size: 50px;
-            position: absolute;
-            left: 330px;
-            top: 144px;
-            text-align: justify; 
-            color: orange;
-            border: white;
-            text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+        .title {
+            font-size: 48px;
+            font-weight: bold;
+            color: #2c3e50;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            animation: fadeIn 2s ease-in-out;
         }
-        </style>
-        
+
+        .buttons {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+            justify-content: center; /* Center buttons horizontally */
+        }
+
+        .btn {
+            width: 200px;
+            height: 60px;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .upload-image {
+            background-color: #ff6f61;
+        }
+
+        .canvas-board {
+            background-color: #4a90e2;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .upload-image:hover {
+            background-color: #ff4a3d;
+        }
+
+        .canvas-board:hover {
+            background-color: #357abd;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            animation: slideIn 1s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
 <body>
-
-   
-        <div class="tag-line1">
-            <P>Handwritten Mathematical </P>
-        </div>
-        <div class="tag-line2">
-            <P>Equation Recogniser And Solver</P>
+    <div class="container">
+        <div class="title">
+            Handwritten Mathematical Equation Recognizer & Solver
         </div>
 
-    <form action="{{ url_for('upload_image') }}" method="POST">
-        <button id="abc" class="upload-image">Upload Image</button>
-        
-    </form>
-    <form action="{{ url_for('canvas_image') }}" method="POST">
-        <button id="xyz" class="canvas-board">Canvas Board</button>
-    </form>
+        <div class="buttons">
+            <form action="{{ url_for('upload_image') }}" method="POST">
+                <button class="btn upload-image">Upload Image</button>
+            </form>
+            <form action="{{ url_for('canvas_image') }}" method="POST">
+                <button class="btn canvas-board">Canvas Board</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
